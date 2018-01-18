@@ -43,6 +43,6 @@ if __name__ == '__main__':
         closest_bar = get_closest_bar(json_decoded, latitude, longitude)
         print('Closest bar in Moscow to you is ' + closest_bar['properties']['Attributes']['Name'])
     except IndexError:
-        print('Please use syntax: "python pprint_json.py <filename>"')
+        print('Please use syntax: "python bars.py <filename>"')
     except FileNotFoundError:
         print('File not found, please try again.')
