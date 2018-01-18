@@ -19,11 +19,11 @@ $ python bars.py <Имя файла> # possibly requires call of python3 executi
 
 # Пример вывода
 
->Biggest bar in Moscow is Спорт бар «Красная машина»
->Smallest bar in Moscow is БАР. СОКИ
->Please input your latitude:55
->Please input your longitude:55
->Closest bar in Moscow to you is Таверна
+> Biggest bar in Moscow is Спорт бар «Красная машина»
+> Smallest bar in Moscow is БАР. СОКИ
+> Please input your latitude:55
+> Please input your longitude:55
+> Closest bar in Moscow to you is Таверна
 
 # Функции
 
