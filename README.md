@@ -20,6 +20,7 @@ $ python bars.py <Имя файла> # possibly requires call of python3 executi
 Файл для примера можно взять с сайта [Devman.org](https://devman.org/fshare/1503831681/4/)
 
 # Пример вывода
+Вывод:
 
 > Biggest bar in Moscow is Спорт бар «Красная машина»
 > Smallest bar in Moscow is БАР. СОКИ
