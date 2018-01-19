@@ -11,7 +11,7 @@
 
 ```bash
 
-$ python bars.py <Имя файла> # possibly requires call of python3 executive instead of just python
+$ python bars.py <Имя файла> # возможно вам потребуется написать python3, а не просто python.
 
 ```
 
@@ -21,11 +21,11 @@ $ python bars.py <Имя файла> # possibly requires call of python3 executi
 
 # Пример вывода
 ```
-Biggest bar in Moscow is Спорт бар «Красная машина»
-Smallest bar in Moscow is БАР. СОКИ
-Please input your latitude:55
-Please input your longitude:55
-Closest bar in Moscow to you is Таверна
+Самый большой бар в Москве: Спорт бар «Красная машина»
+Самый маленький бар в Москве: БАР. СОКИ
+Введите вашу широту:55
+Введите вашу долготу:55
+Самый ближайший к вам бар: Таверна
 ```
 # Функции
 

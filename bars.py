@@ -37,13 +37,13 @@ if __name__ == '__main__':
         json_decoded = json_decoded['features']
         biggest_bar = get_biggest_bar(json_decoded)
         smallest_bar = get_smallest_bar(json_decoded)
-        print('Biggest bar in Moscow is ' + biggest_bar['properties']['Attributes']['Name'])
-        print('Smallest bar in Moscow is ' + smallest_bar['properties']['Attributes']['Name'])
-        latitude = float(input('Please input your latitude:'))
-        longitude = float(input('Please input your longitude:'))
+        print('Самый большой бар в Москве: ' + biggest_bar['properties']['Attributes']['Name'])
+        print('Самый маленький бар в Москве: ' + smallest_bar['properties']['Attributes']['Name'])
+        latitude = float(input('Введите вашу широту:'))
+        longitude = float(input('Введите вашу долготу:'))
         closest_bar = get_closest_bar(json_decoded, latitude, longitude)
-        print('Closest bar in Moscow to you is ' + closest_bar['properties']['Attributes']['Name'])
+        print('Самый ближайший к вам бар: ' + closest_bar['properties']['Attributes']['Name'])
     except IndexError:
-        print('Please use syntax: "python bars.py <filename>"')
+        print('Используйте синтакс: "python bars.py <filename>"')
     except FileNotFoundError:
-        print('File not found, please try again.')
+        print('Файл не найден, попробуйте еще раз.')
