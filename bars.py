@@ -4,22 +4,19 @@ from math import sqrt
 
 
 def load_data(file_path):
-    json_content = open(file_path,
-                        encoding='utf-8').read()
+    json_content = open(file_path, encoding='utf-8').read()
     return json_content
 
 
 def get_biggest_bar(json_decoded):
     biggest_bar = max(json_decoded,
-                      key=lambda qty: qty['properties']['Attributes']['SeatsCount']
-                      )
+                      key=lambda qty: qty['properties']['Attributes']['SeatsCount'])
     return biggest_bar
 
 
 def get_smallest_bar(json_decoded):
     smallest_bar = min(json_decoded,
-                       key=lambda qty: qty['properties']['Attributes']['SeatsCount']
-                       )
+                       key=lambda qty: qty['properties']['Attributes']['SeatsCount'])
     return smallest_bar
 
 
