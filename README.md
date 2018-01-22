@@ -34,15 +34,15 @@ load_data(file_path) # Загружает данные из файла.
 ```
 
 ```python
-get_biggest_bar(json_decoded) # Выдает крупнейший бар.
+get_biggest_bar(bars) # Выдает крупнейший бар.
 ```
 
 ```python
-get_smallest_bar(json_decoded) # Выдает самый маленький бар.
+get_smallest_bar(bars) # Выдает самый маленький бар.
 ```
 
 ```python
-get_closest_bar(json_decoded, latitude, longitude) # Выдает ближайший бар.
+get_closest_bar(bars, latitude, longitude) # Выдает ближайший бар.
 ```
 
 # Пример использования
@@ -50,10 +50,9 @@ get_closest_bar(json_decoded, latitude, longitude) # Выдает ближайш
 ```python
 import json
 import bars
-json_content = bars.load_data('bars.json')
-json_decoded = json.loads(json_content)
-json_decoded = json_decoded['features']
-print(bars.get_closest_bar(json_decoded, 33, 55))
+bars = bars.load_data('bars.json')
+bars = bars['features']
+print(bars.get_closest_bar(bars, 33, 55))
 ```
 Вывод будет:
 ```
