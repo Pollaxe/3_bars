@@ -50,13 +50,19 @@ if __name__ == '__main__':
     bars = bars['features']
     biggest_bar = get_biggest_bar(bars)
     smallest_bar = get_smallest_bar(bars)
-    print('{} {}'.format('Самый большой бар в Москве:', biggest_bar['properties']['Attributes']['Name']))
-    print('{} {}'.format('Самый маленький бар в Москве:', smallest_bar['properties']['Attributes']['Name']))
+    print('{} {}'.format('Самый большой бар в Москве:',
+                         biggest_bar['properties']['Attributes']['Name']
+                         ))
+    print('{} {}'.format('Самый маленький бар в Москве:',
+                         smallest_bar['properties']['Attributes']['Name']
+                         ))
     try:
         latitude = float(input('Введите вашу широту:'))
         longitude = float(input('Введите вашу долготу:'))
         closest_bar = get_closest_bar(bars, latitude, longitude)
-        print('{} {}'.format('Самый ближайший к вам бар:', closest_bar['properties']['Attributes']['Name']))
+        print('{} {}'.format('Самый ближайший к вам бар:',
+                             closest_bar['properties']['Attributes']['Name']
+                             ))
     except ValueError:
         print('Не были введены координаты.')
         sys.exit()
