@@ -32,8 +32,7 @@ def get_closest_bar(bars, latitude, longitude):
                       sqrt((
                         coords['geometry']['coordinates'][0] - latitude) ** 2 +
                         (coords['geometry']['coordinates'][1] - longitude) ** 2
-                        )
-                      )
+                           ))
     return closest_bar
 
 
