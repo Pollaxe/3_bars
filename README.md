@@ -50,8 +50,9 @@ get_closest_bar(bars, latitude, longitude) # Выдает ближайший б�
 ```python
 import json
 import bars
-bars = bars.load_data('bars.json')
-print(bars.get_closest_bar(bars, 33, 55))
+bars_json = bars.load_data('bars.json')
+bars_json = bars_json['features']
+print(bars.get_closest_bar(bars_json, 33, 55))
 ```
 Вывод будет:
 ```
