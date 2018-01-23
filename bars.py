@@ -36,6 +36,18 @@ def get_closest_bar(bars, latitude, longitude):
     return closest_bar
 
 
+def print_smallest_and_biggest_bar(bars):
+    biggest_bar = get_biggest_bar(bars)
+    smallest_bar = get_smallest_bar(bars)
+    print('{} {}'.format('Самый большой бар в Москве:',
+                         biggest_bar['properties']['Attributes']['Name']
+                         ))
+    print('{} {}'.format('Самый маленький бар в Москве:',
+                         smallest_bar['properties']['Attributes']['Name']
+                         ))
+
+
+
 if __name__ == '__main__':
     try:
         file_path = sys.argv[1]
@@ -45,14 +57,7 @@ if __name__ == '__main__':
     except IndexError:
         sys.exit('Используйте синтаксис: "python bars.py <filename>"')
     bars = json_decoded['features']
-    biggest_bar = get_biggest_bar(bars)
-    smallest_bar = get_smallest_bar(bars)
-    print('{} {}'.format('Самый большой бар в Москве:',
-           biggest_bar['properties']['Attributes']['Name']
-           ))
-    print('{} {}'.format('Самый маленький бар в Москве:',
-           smallest_bar['properties']['Attributes']['Name']
-           ))
+    print_smallest_and_biggest_bar(bars)
     try:
         latitude = float(input('Введите вашу широту:'))
         longitude = float(input('Введите вашу долготу:'))
