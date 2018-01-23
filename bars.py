@@ -56,7 +56,7 @@ def print_closest_bar(bars):
                closest_bar['properties']['Attributes']['Name']
                ))
     except ValueError:
-        sys.exit('Не были введены координаты.')
+        print('Не были введены координаты.')
 
 
 
