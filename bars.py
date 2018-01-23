@@ -47,6 +47,18 @@ def print_smallest_and_biggest_bar(bars):
                          ))
 
 
+def print_closest_bar(bars):
+    try:
+        latitude = float(input('Введите вашу широту:'))
+        longitude = float(input('Введите вашу долготу:'))
+        closest_bar = get_closest_bar(bars, latitude, longitude)
+        print('{} {}'.format('Самый ближайший к вам бар:',
+               closest_bar['properties']['Attributes']['Name']
+               ))
+    except ValueError:
+        sys.exit('Не были введены координаты.')
+
+
 
 if __name__ == '__main__':
     try:
@@ -58,12 +70,4 @@ if __name__ == '__main__':
         sys.exit('Используйте синтаксис: "python bars.py <filename>"')
     bars = json_decoded['features']
     print_smallest_and_biggest_bar(bars)
-    try:
-        latitude = float(input('Введите вашу широту:'))
-        longitude = float(input('Введите вашу долготу:'))
-        closest_bar = get_closest_bar(bars, latitude, longitude)
-        print('{} {}'.format('Самый ближайший к вам бар:',
-               closest_bar['properties']['Attributes']['Name']
-               ))
-    except ValueError:
-        sys.exit('Не были введены координаты.')
+    print_closest_bar(bars)
