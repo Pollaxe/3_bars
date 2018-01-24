@@ -44,11 +44,9 @@ get_smallest_bar(bars) # Выдает самый маленький бар.
 ```python
 get_closest_bar(bars, latitude, longitude) # Выдает ближайший бар.
 ```
+
 ```python
-print_closest_bar(bars) # - Печатает в консоль ближайший бар.
-```
-```python
-print_smallest_and_biggest_bar(bars) # - Печатает в консоль самый маленький и самый большой бар.
+print_bars(smallest_bar, biggest_bar, closest_bar) # - Печатает в консоль самый маленький, самый большой и ближайший бары.
 ```
 
 # Пример использования
