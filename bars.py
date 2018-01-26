@@ -40,9 +40,10 @@ def input_coordinates():
     try:
         latitude = float(input('Введите вашу широту:'))
         longitude = float(input('Введите вашу долготу:'))
-        return(latitude, longitude)
+        return latitude, longitude
     except ValueError:
-        sys.exit('Не были введены координаты.')
+        print('Не были введены координаты')
+        return None, None
 
 
 def print_bars(smallest_bar, biggest_bar, closest_bar):
@@ -52,9 +53,10 @@ def print_bars(smallest_bar, biggest_bar, closest_bar):
     print('{} {}'.format('Самый маленький бар в Москве:',
                          smallest_bar['properties']['Attributes']['Name']
                          ))
-    print('{} {}'.format('Самый ближайший к вам бар:',
-                         closest_bar['properties']['Attributes']['Name']
-                         ))
+    if closest_bar != None:
+        print('{} {}'.format('Самый ближайший к вам бар:',
+                            closest_bar['properties']['Attributes']['Name']
+                            ))
 
 
 
@@ -70,5 +72,8 @@ if __name__ == '__main__':
     biggest_bar = get_biggest_bar(bars)
     smallest_bar = get_smallest_bar(bars)
     latitude, longitude = input_coordinates()
-    closest_bar = get_closest_bar(bars, latitude, longitude)
+    if latitude != None and longitude != None:
+        closest_bar = get_closest_bar(bars, latitude, longitude)
+    else:
+        closest_bar = None
     print_bars(smallest_bar, biggest_bar, closest_bar)
