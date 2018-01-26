@@ -36,6 +36,15 @@ def get_closest_bar(bars, latitude, longitude):
     return closest_bar
 
 
+def input_coordinates():
+    try:
+        latitude = float(input('Введите вашу широту:'))
+        longitude = float(input('Введите вашу долготу:'))
+        return(latitude, longitude)
+    except ValueError:
+        sys.exit('Не были введены координаты.')
+
+
 def print_bars(smallest_bar, biggest_bar, closest_bar):
     print('{} {}'.format('Самый большой бар в Москве:',
                          biggest_bar['properties']['Attributes']['Name']
@@ -60,10 +69,6 @@ if __name__ == '__main__':
     bars = json_decoded['features']
     biggest_bar = get_biggest_bar(bars)
     smallest_bar = get_smallest_bar(bars)
-    try:
-        latitude = float(input('Введите вашу широту:'))
-        longitude = float(input('Введите вашу долготу:'))
-    except ValueError:
-        sys.exit('Не были введены координаты.')
+    latitude, longitude = input_coordinates()
     closest_bar = get_closest_bar(bars, latitude, longitude)
     print_bars(smallest_bar, biggest_bar, closest_bar)
