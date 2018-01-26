@@ -53,11 +53,10 @@ def print_bars(smallest_bar, biggest_bar, closest_bar):
     print('{} {}'.format('Самый маленький бар в Москве:',
                          smallest_bar['properties']['Attributes']['Name']
                          ))
-    if closest_bar != None:
+    if closest_bar is not None:
         print('{} {}'.format('Самый ближайший к вам бар:',
-                            closest_bar['properties']['Attributes']['Name']
-                            ))
-
+                             closest_bar['properties']['Attributes']['Name']
+                             ))
 
 
 if __name__ == '__main__':
@@ -72,7 +71,7 @@ if __name__ == '__main__':
     biggest_bar = get_biggest_bar(bars)
     smallest_bar = get_smallest_bar(bars)
     latitude, longitude = input_coordinates()
-    if latitude != None and longitude != None:
+    if latitude is not None and longitude is not None:
         closest_bar = get_closest_bar(bars, latitude, longitude)
     else:
         closest_bar = None
