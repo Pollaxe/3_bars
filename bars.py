@@ -7,7 +7,8 @@ def load_data(file_path):
     with open(file_path, encoding='utf-8') as file_object:
         json_content = file_object.read()
         json_decoded = json.loads(json_content)
-    return json_decoded
+    bars = json_decoded['features']
+    return bars
 
 
 def get_biggest_bar(bars):
@@ -76,16 +77,12 @@ def print_bars(bar, bar_type):
 
 
 if __name__ == '__main__':
+    file_path = sys.argv[1]
     try:
-        file_path = sys.argv[1]
-        json_decoded = load_data(file_path)
+        bars = load_data(file_path)
     except FileNotFoundError:
         sys.exit('Файл не найден, попробуйте еще раз.')
     except IndexError:
         sys.exit('Используйте синтаксис: "python bars.py <filename>"')
-    bars = json_decoded['features']
-    try:
-        bar, bar_type = what_to_print(bars)
-    except UnboundLocalError:
-        sys.exit()
+    bar, bar_type = what_to_print(bars)
     print_bars(bar, bar_type)
