@@ -42,21 +42,37 @@ def input_coordinates():
         longitude = float(input('Введите вашу долготу:'))
         return latitude, longitude
     except ValueError:
-        print('Не были введены координаты')
+        print('Не были введены координаты.')
         return None, None
 
 
-def print_bars(smallest_bar, biggest_bar, closest_bar):
-    print('{} {}'.format('Самый большой бар в Москве:',
-                         biggest_bar['properties']['Attributes']['Name']
-                         ))
-    print('{} {}'.format('Самый маленький бар в Москве:',
-                         smallest_bar['properties']['Attributes']['Name']
-                         ))
-    if closest_bar is not None:
-        print('{} {}'.format('Самый ближайший к вам бар:',
-                             closest_bar['properties']['Attributes']['Name']
-                             ))
+def what_to_print(bars):
+    bar_type = input('Введите тип бара, который вам нужен(большой, маленький, ближайший):')
+    if bar_type == 'большой':
+        bar = get_biggest_bar(bars)
+    elif bar_type == 'маленький':
+        bar = get_smallest_bar(bars)
+    elif bar_type == 'ближайший':
+        latitude, longitude = input_coordinates()
+        if any([latitude, longitude]):
+            bar = get_closest_bar(bars, latitude, longitude)
+        else:
+            bar = None
+    else:
+        print('Был неправильно введен тип бара, нужно было написать четко большой, маленький или ближайший')
+        bar = None
+    return bar, bar_type
+
+
+def print_bars(bar, bar_type):
+    if bar is not None:
+        print('{} {} {} {}'.format('Самый',
+                                   bar_type,
+                                   'бар в Москве:',
+                                   bar['properties']['Attributes']['Name']
+                                   ))
+    else:
+        print('Попробуйте еще раз.')
 
 
 if __name__ == '__main__':
@@ -68,11 +84,8 @@ if __name__ == '__main__':
     except IndexError:
         sys.exit('Используйте синтаксис: "python bars.py <filename>"')
     bars = json_decoded['features']
-    biggest_bar = get_biggest_bar(bars)
-    smallest_bar = get_smallest_bar(bars)
-    latitude, longitude = input_coordinates()
-    if latitude is not None and longitude is not None:
-        closest_bar = get_closest_bar(bars, latitude, longitude)
-    else:
-        closest_bar = None
-    print_bars(smallest_bar, biggest_bar, closest_bar)
+    try:
+        bar, bar_type = what_to_print(bars)
+    except UnboundLocalError:
+        sys.exit()
+    print_bars(bar, bar_type)
